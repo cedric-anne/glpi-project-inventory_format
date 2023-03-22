@@ -19,8 +19,9 @@ jobs:
       - name: "Refresh sources"
         id: "refresh"
         run: |
-          composer install --ansi --no-interaction --no-progress --prefer-dist
+          composer install --ansi --no-dev --no-interaction --no-progress --prefer-dist
           bin/refresh_hw_sources
+          bin/build_hw_jsons
           if [ ! -z "$(git status --porcelain)" ]; then
             BRANCH="task/refresh-sources-$(date +'%Y%m%d%H%M%S')"
             git config --local user.email "bot@glpi-project.org"
