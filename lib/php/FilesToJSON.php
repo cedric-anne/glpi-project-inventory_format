@@ -144,7 +144,7 @@ class FilesToJSON
      */
     public function getSourceFilePath($type)
     {
-        if (!in_array($type, self::SOURCES)) {
+        if (!array_key_exists($type, self::SOURCES)) {
             throw new \RuntimeException('Unknown type ' . $type);
         }
 
